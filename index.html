@@ -113,7 +113,7 @@
 				</section>
 				<section><h3>Beliebtheit</h3><a href="https://npmtrends.com/angular-vs-react-vs-svelte-vs-vue"><img src="most-used-frameworks.png" alt=""></a></section>
 				<section>
-					<h3>Beispiel React HTML</h3>
+					<h3>Beispiel React HTML / DOM</h3>
 					<pre><code>
 						&lt;!DOCTYPE html&gt;
 						&lt;html&gt;
@@ -127,6 +127,53 @@
 						&lt;/body&gt;
 						&lt;/html&gt;
 					</code></pre>
+				</section>
+				<section>
+					<h3>Beispiel React Initialisierung</h3>
+					<pre><code class="text-sm"><script type="text/template">
+						import React from 'react'
+						import ReactDOM from 'react-dom/client'
+						import App from './App.jsx'
+						import './index.css'
+
+						const reactRoot = document.getElementById('root');
+
+						ReactDOM.createRoot(reactRoot).render(
+							<React.StrictMode>
+								<App />
+							</React.StrictMode>,
+						)
+
+					</script></code></pre>
+				</section>
+				<section>
+					<h3>Beispiel React Umsetzung</h3>
+					<pre><code class="text-xs p-10" data-trim><script type="text/template">
+						import { useState } from 'react'
+
+						function App() {
+							const [text, setText] = useState('This is the original Text');
+							const changeColorAndText = () => {
+								setText('The text has changed!');
+							}
+
+							return (
+								<main className="grid place-items-center place-content-center h-screen">
+									<p className={text.includes('original') ? 'text-slate-900' : 'text-red-600'}>
+										{text}
+									</p>
+									<button
+										className="bg-teal-100 p-2 rounded border border-blue-300 font-semibold text-teal-700 shadow"
+										onClick={changeColorAndText}
+									>
+										Change Text and Color
+									</button>
+								</main>
+							)
+						}
+
+						export default App
+					</script></code></pre>
 				</section>
 			</section>
 		</div>

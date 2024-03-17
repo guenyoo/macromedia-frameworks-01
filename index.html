@@ -8,7 +8,7 @@
     <title>Vite App</title>
   </head>
   <body>
-	<div class="reveal bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
+	<div class="reveal  text-white">
 		<div class="slides">
 			<section data-state="">
 				<h1 class="font-bold text-white mb-5">Frameworks & Worksflows</h2>
@@ -24,8 +24,18 @@
 				</ul>
 			</section>
 			<section>
-				<h2>Wie funktioniert das Web?</h2>
-				<img src="/how-the-web-works.png" alt="">
+				<section>
+					<h2 style="margin: 0;">Wie funktioniert das Web?</h2>
+					<h3 style="margin: 0;">SSR</h3>
+					<p class="text-sm">In diesem Beispiel, generiert der Server klassisch alles, was der User benötigt auf der Serverseite im Vorhinein und spielt dem User auf Anfrage die gewünschte HTML Seite aus.</p>
+					<img src="/how-the-web-works-SSR.png" alt="">
+				</section>
+				<section>
+					<h2 style="margin: 0;">Wie funktioniert das Web?</h2>
+					<h3 style="margin: 0;">Client Rendering</h3>
+					<p class="text-sm">In diesem Beispiel spielt der Server nur sehr schnell ein minimales Grundgerüst zurück und der Client lädt, sobald das JavaScript ready ist, alles andere nach.</p>
+					<img src="/how-the-web-works-client.png" alt="">
+				</section>
 			</section>
 			<section>
 				<section><h2>Was ist ein Framework?</h2><q>A framework provides a <span class="underline decoration-violet-200 text-violet-200">comprehensive structure</span> for your application. It <span class="underline decoration-violet-200 text-violet-200">dictates</span> the architecture and workflow; you build your application according to the framework's rules and guidelines. Frameworks often come with a predefined way to organize your code, templates, data models, and sometimes even dictate how to handle certain tasks like user input or database interactions.</q></section>
@@ -99,20 +109,6 @@
 			<section>
 				<section><h2>Die Lösung - Data-Driven State-Changes</h2></section>
 				<section>
-					<h3>Die bekanntesten/meistgenutzten Frontend Frameworks</h3>
-					<div class="grid grid-cols-4 place-items-center">
-						<h4 class="text-left">Angular</h4>
-						<h4 class="text-left">React</h4>
-						<h4 class="text-left">Svelte</h4>
-						<h4 class="text-left">Vue</h4>
-						<img class="size-20" src="/Angular_logo.png" alt="">
-						<img class="size-20" src="/React-logo.svg" alt="">
-						<img class="size-20" src="/Svelte_Logo.png" alt="">
-						<img class="size-20" src="/Vue.js_Logo.png" alt="">
-					</div>
-				</section>
-				<section><h3>Beliebtheit</h3><a href="https://npmtrends.com/angular-vs-react-vs-svelte-vs-vue"><img src="most-used-frameworks.png" alt=""></a></section>
-				<section>
 					<h3>Beispiel React HTML / DOM</h3>
 					<pre><code>
 						&lt;!DOCTYPE html&gt;
@@ -127,6 +123,10 @@
 						&lt;/body&gt;
 						&lt;/html&gt;
 					</code></pre>
+				</section>
+				<section>
+					<p>Man sieht hier, dass es nur noch eine Stelle gibt, an der für den Browser Nodes ausgetauscht werden: Den sogenannten React-Root.</p>
+					<p>React löst das, indem sie einen ShadowDOM erstellen, also genau das, was der Browser nativ als DOM hat, nur geklont und intern mit eigenem State befüllt. Das löst die Performance Probleme größtenteils, da der DOM nicht mehr durchgehangelt werden muss im Browser (was teuer ist) und auch das ersetzen passiert immer zur Renderzeit auf einen Schlag, und nicht mehr willkürlich.</p>
 				</section>
 				<section>
 					<h3>Beispiel React Initialisierung</h3>
@@ -174,6 +174,48 @@
 
 						export default App
 					</script></code></pre>
+				</section>
+				<section>
+					<h3>Nach Optimierung mit Komponentenisierung</h3>
+					<pre><code class="text-sm"><script type="text/template">
+						import { useState } from 'react'
+
+						function App() {
+							const [text, setText] = useState('This is the original Text');
+							const changeColorAndText = () => {
+								setText('The text has changed!');
+							}
+
+							return (
+								<main className="grid place-items-center place-content-center h-screen">
+									<Text text={text} />
+									<Button onClick={changeColorAndText} text="Change Text and Color" />
+								</main>
+							)
+						}
+
+						export default App
+
+					</script></code></pre>
+				</section>
+			</section>
+			<section>
+				<section><h3>Die bekanntesten/meistgenutzten Frontend Frameworks</h3>
+					<div class="grid grid-cols-4 place-items-center">
+						<h4 class="text-left">Angular</h4>
+						<h4 class="text-left">React</h4>
+						<h4 class="text-left">Svelte</h4>
+						<h4 class="text-left">Vue</h4>
+						<a href="https://angular.io/"><img class="size-20" src="/Angular_logo.png" alt=""></a>
+						<a href="https://react.dev"><img class="size-20" src="/React-logo.svg" alt=""></a>
+						<a href="https://svelte.dev/"><img class="size-20" src="/Svelte_Logo.png" alt=""></a>
+						<a href="https://vuejs.org/"><img class="size-20" src="/Vue.js_Logo.png" alt=""></a>
+					</div></section>
+					<section><h3>Beliebtheit</h3><a href="https://npmtrends.com/angular-vs-react-vs-svelte-vs-vue"><img src="most-used-frameworks.png" alt=""></a></section>
+			</section>
+			<section data-background-color="rgb(70, 70, 255)">
+				<section>
+					<h3>Wichtige Tools</h3>
 				</section>
 			</section>
 		</div>
